@@ -23,7 +23,8 @@
 
         chatSocket.onmessage = function(e) {
             const data = JSON.parse(e.data);
-            document.querySelector('#chat-log').value += (data.message + '\n');
+            // Set the value of the textarea instead of appending
+            document.querySelector('#chat-log').value = (data.message + '\n' + document.querySelector('#chat-log').value);
         };
 
         chatSocket.onclose = function(e) {
